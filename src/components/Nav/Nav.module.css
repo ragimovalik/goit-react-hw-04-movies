@@ -1,0 +1,33 @@
+.Nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: lightgray;
+  border-bottom: 2px dotted blue;
+}
+
+.Nav__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.Nav__item {
+  color: purple;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.Nav__item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.active {
+  background-color: salmon;
+}
+
+.link {
+  text-decoration: none;
+}

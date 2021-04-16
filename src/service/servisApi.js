@@ -23,17 +23,14 @@ const fetchQueryHandler = (keyWord, value) => {
         `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${value}&page=1`,
       );
 
+    case 'nPage':
+      return newFetch(
+        `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${value}`,
+      );
+
     default:
       return newFetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
   }
 };
 
 export default fetchQueryHandler;
-
-/*
-const trendingMovies = `${BASE_URL}/trending/movie/week?api_key=${API_KEY}`;
-const searchingQuery = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=1`;
-const movieInfo = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`;
-const movieCast = `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`;
-const movieReviews = `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}`;
-*/

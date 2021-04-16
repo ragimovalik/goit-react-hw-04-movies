@@ -6,7 +6,7 @@ import fetchQueryHandler from '../service/servisApi';
 const MoviesPage = props => {
   const location = useLocation();
   const { pathname, state, search } = location;
-  const initialQueryState = ''; //parse(search)
+  // const initialQueryState = ''; //parse(search)
 
   const { push } = useHistory();
   const [theSearch, setTheSearch] = useState(state?.theSearch || '');

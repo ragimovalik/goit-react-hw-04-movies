@@ -1,7 +1,6 @@
 import HomePage from './pages/HomePage';
 import MoviesPage from './pages/MoviesPage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
-import NotFound from './pages/NotFound';
 
 export const routes = [
   {

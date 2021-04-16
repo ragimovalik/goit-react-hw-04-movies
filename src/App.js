@@ -1,8 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import MoviesPage from './pages/MoviesPage';
+import { routes } from './routes';
 import Nav from './components/Nav';
-import MovieDetailsPage from './pages/MovieDetailsPage';
 import NotFound from './pages/NotFound';
 import './App.css';
 
@@ -11,6 +9,35 @@ const App = () => (
     <Nav />
 
     <Switch>
+      {routes.map(({ path, exact, component: Component, label }) => (
+        <Route
+          key={path}
+          path={path}
+          exact={exact}
+          component={Component}
+          label={label}
+        />
+      ))}
+      <Route component={NotFound} />
+    </Switch>
+  </>
+);
+
+export default App;
+
+/*
+      <Suspense fallback={<p>Loading...</p>}>
+        <Switch>
+          {routes.map(({ path, exact, component: Component }) => (
+            <Route key={path} path={path} exact={exact} component={Component} />
+          ))}
+
+          <Route component={Page404} />
+        </Switch>
+      </Suspense>
+*/
+
+/*
       <Route path="/" exact component={HomePage} label="Home Page" />
       <Route path="/movies" exact component={MoviesPage} label="Movies Page" />
       <Route
@@ -18,12 +45,7 @@ const App = () => (
         component={MovieDetailsPage}
         label="Movie Detail"
       />
-      <Route component={NotFound} />
-    </Switch>
-  </>
-);
-
-export default App;
+*/
 
 /*
 Redirect to

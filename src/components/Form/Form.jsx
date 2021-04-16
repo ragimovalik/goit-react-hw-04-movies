@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import styles from './Form.module.css';
 
 class Form extends Component {
-  state = { name: '' };
+  state = { inputedText: '' };
 
   setDefaultState = () =>
     this.setState({
-      name: '',
+      inputedText: '',
     });
 
   onChange = ({ target: { name, value } }) => {
@@ -20,7 +20,8 @@ class Form extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    this.props.onSubmit(this.state);
+    this.state.inputedText.length >= 2 &&
+      this.props.onSubmit(this.state.inputedText);
 
     this.setDefaultState();
   };
@@ -29,18 +30,15 @@ class Form extends Component {
     return (
       <form className={styles.Form} onSubmit={this.handleSubmit}>
         <InputBox
-          labelText={'Name'}
-          htmlFor={'name'}
+          labelText={'Film'}
+          htmlFor={'film'}
           type={'text'}
-          id={'name'}
-          name={'name'}
-          title={
-            "Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-          }
-          pattern={'text'}
-          placeholder={'Name'}
+          id={'film'}
+          name={'inputedText'}
+          title={' '}
+          placeholder={'Your query'}
           required={true}
-          value={this.state.name}
+          value={this.state.inputedText}
           onChange={this.onChange}
         />
 

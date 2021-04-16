@@ -7,18 +7,12 @@ const InputBox = ({
   id,
   name,
   title,
-  pattern,
   placeholder,
   required,
   value,
   labelText,
   onChange,
 }) => {
-  const patternText =
-    "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
-  const patternPhone = '^[+]{0,1}[ .()0-9-]{3,8}[0-9. -]{3,11}$';
-  // '/(+?( |-|.)?d{1,2}( |-|.)?)?((?d{3})?|d{3})( |-|.)?(d{3}( |-|.)?d{4})/';
-
   return (
     <div className={styles.Form__wrap}>
       <label htmlFor={htmlFor} className={styles.Form__label}>
@@ -31,7 +25,6 @@ const InputBox = ({
         id={id}
         name={name}
         title={title}
-        pattern={pattern === 'text' ? `${patternText}` : `${patternPhone}`}
         placeholder={placeholder}
         required={required}
         onChange={onChange}

@@ -5,7 +5,10 @@ const HomePage = () => {
   const [films, setFilms] = useState([]);
 
   useEffect(() => {
-    fetchQueryHandler('trend').then(({ results }) => setFilms(results));
+    fetchQueryHandler('trend').then(data => {
+      console.log(data);
+      setFilms(data.results);
+    });
   }, []);
 
   return (

@@ -1,0 +1,27 @@
+.Filmslist {
+  text-align: center;
+  min-width: 360px;
+  min-height: 600px;
+  /* margin-bottom: 10px; */
+}
+
+.Filmslist__item {
+  margin: 0 auto;
+  padding-left: 5px;
+  max-width: 70%;
+  margin-bottom: 8px;
+}
+
+.Filmslist__title {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.Filmslist__item:hover,
+.Filmslist__item:focus {
+  transform: scale(1.03);
+}
+
+/* .Filmslist__item:not(:last-child) {
+  margin-bottom: 8px;
+} */

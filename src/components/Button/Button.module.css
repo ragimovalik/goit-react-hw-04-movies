@@ -1,0 +1,35 @@
+@value colors: '../../colors.css';
+@value bgcPrimary, darkened, lightest, lightened, text, white from colors;
+
+.Button {
+  display: inline-block;
+  width: 180px;
+  height: 45px;
+  padding: 5px;
+  border: 3px solid lightest;
+  border-radius: 8px;
+  outline: none;
+
+  background-color: darkened;
+  color: white;
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.33;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.Button:hover,
+.Button:focus {
+  transform: scale(1.05);
+}
+
+.Button:first-child {
+  margin-right: 10px;
+}

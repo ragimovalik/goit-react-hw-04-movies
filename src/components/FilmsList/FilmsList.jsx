@@ -8,6 +8,7 @@ const FilmsList = ({ films, queriedWord }) => {
       {films.map(({ id, title }) => (
         <li className={styles.Filmslist__item} key={id}>
           <Link
+            target="_blank"
             to={{
               pathname: `movies/${id}`,
             }}

@@ -27,6 +27,7 @@ const MovieDetailsPage = () => {
     queryOptions.keyWord = 'info';
     queryOptions.value = params.movieId;
     setCast({ cast: [], crew: [] });
+    setReviews([]);
 
     fetchQueryHandler(queryOptions)
       .then(filmInfo => {
@@ -43,6 +44,7 @@ const MovieDetailsPage = () => {
       .then(cast => {
         console.log(cast);
         setCast(cast);
+        setReviews([]);
       })
       .catch(error => console.log('Something gone wrong', error));
   };
@@ -54,6 +56,7 @@ const MovieDetailsPage = () => {
     fetchQueryHandler(queryOptions).then(reviews => {
       console.log(reviews.results);
       setReviews(reviews.results);
+      setCast({ cast: [], crew: [] });
     });
   };
 
@@ -71,9 +74,9 @@ const MovieDetailsPage = () => {
         <Cast cast={cast} />
       </Container>
 
-      <div>
+      <Container>
         <Reviews reviews={reviews} />
-      </div>
+      </Container>
     </>
   );
 };

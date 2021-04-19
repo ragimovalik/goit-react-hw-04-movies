@@ -1,12 +1,14 @@
+import styles from './Reviews.module.css';
+
 const Reviews = ({ reviews }) => {
   return (
     <>
-      <ul>
+      <ul className={styles.Reviews}>
         {reviews &&
           reviews.map(review => (
-            <li key={review.id}>
-              <h4>{review.author}</h4>
-              <p>{review.content}</p>
+            <li key={review.id} className={styles.Review}>
+              <h4 className={styles.Review__author}>{review.author}</h4>
+              <p className={styles.Review__text}>{review.content}</p>
             </li>
           ))}
       </ul>

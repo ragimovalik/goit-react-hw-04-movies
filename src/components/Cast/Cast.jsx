@@ -3,7 +3,7 @@ import styles from './Cast.module.css';
 
 const Cast = ({ cast: { cast, crew } }) => (
   <div className={styles.Cast}>
-    {cast.length ? <h3 className={styles.Cast__block}>Cast</h3> : null}
+    {cast.length ? <h3 className={styles.Cast__title}>Cast</h3> : null}
     <ul className={styles.Castlist}>
       {cast.map(actor => (
         <li className={styles.Castlist__item} key={actor.id}>
@@ -23,7 +23,7 @@ const Cast = ({ cast: { cast, crew } }) => (
         </li>
       ))}
     </ul>
-    {crew.length ? <h3 className={styles.Cast__block}>Crew</h3> : null}
+    {crew.length ? <h3 className={styles.Cast__title}>Crew</h3> : null}
     <ul className={styles.Castlist}>
       {crew.map(crew => (
         <li className={styles.Castlist__item} key={crew.credit_id}>

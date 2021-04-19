@@ -1,18 +1,19 @@
 @value colors: '../../colors.css';
-@value bgcPrimary, darkened, text, white from colors;
+@value bgcPrimary, darkened, lightest, lightened, text, white from colors;
 
 .Form {
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
   align-items: baseline;
+  padding: 5px;
 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .Form__btn {
   width: 150px;
-  height: 40px;
+  height: 45px;
   padding: 5px;
   border: 3px solid bgcPrimary;
   border-radius: 8px;
@@ -31,5 +32,6 @@
 
 .Form__btn:hover,
 .Form__btn:focus {
-  transform: scale(1.1);
+  background-color: lightened;
+  /* transform: scale(1.05); */
 }

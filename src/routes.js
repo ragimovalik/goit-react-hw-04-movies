@@ -1,6 +1,14 @@
-import HomePage from './pages/HomePage';
-import MoviesPage from './pages/MoviesPage';
-import MovieDetailsPage from './pages/MovieDetailsPage';
+import { lazy } from 'react';
+
+const HomePage = lazy(() =>
+  import('./pages/HomePage' /* webpackChunkName: "HomePage" */),
+);
+const MoviesPage = lazy(() =>
+  import('./pages/MoviesPage' /* webpackChunkName: "MoviesPage" */),
+);
+const MovieDetailsPage = lazy(() =>
+  import('./pages/MovieDetailsPage' /* webpackChunkName: "MovieDetailsPage" */),
+);
 
 export const routes = [
   {

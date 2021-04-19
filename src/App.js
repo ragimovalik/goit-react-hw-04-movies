@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { routes } from './routes';
 import Nav from './components/Nav';
@@ -7,35 +8,24 @@ import './App.css';
 const App = () => (
   <>
     <Nav />
-
-    <Switch>
-      {routes.map(({ path, exact, component: Component, label }) => (
-        <Route
-          key={path}
-          path={path}
-          exact={exact}
-          component={Component}
-          label={label}
-        />
-      ))}
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={<p>Loading</p>}>
+      <Switch>
+        {routes.map(({ path, exact, component: Component, label }) => (
+          <Route
+            key={path}
+            path={path}
+            exact={exact}
+            component={Component}
+            label={label}
+          />
+        ))}
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   </>
 );
 
 export default App;
-
-/*
-      <Suspense fallback={<p>Loading...</p>}>
-        <Switch>
-          {routes.map(({ path, exact, component: Component }) => (
-            <Route key={path} path={path} exact={exact} component={Component} />
-          ))}
-
-          <Route component={Page404} />
-        </Switch>
-      </Suspense>
-*/
 
 /*
       <Route path="/" exact component={HomePage} label="Home Page" />
@@ -49,9 +39,4 @@ export default App;
 
 /*
 Redirect to
-
-suspense from react = fallback={<p> ...loading</p>}
-lazy from react = cb
-comment === webpackChunkName: "?????" 
-
 */

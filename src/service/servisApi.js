@@ -7,7 +7,7 @@ const newFetch = url =>
     .then(res => res.json())
     .then(data => data);
 
-const fetchQueryHandler = (keyWord, value) => {
+const fetchQueryHandler = ({ keyWord, pageNumber = 1, value }) => {
   switch (keyWord) {
     case 'cast':
       return newFetch(`${BASE_URL}/movie/${value}/credits?api_key=${API_KEY}`);
@@ -20,12 +20,12 @@ const fetchQueryHandler = (keyWord, value) => {
 
     case 'query':
       return newFetch(
-        `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${value}&page=1`,
+        `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${value}&page=${pageNumber}`,
       );
 
     case 'nPage':
       return newFetch(
-        `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${value}`,
+        `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${pageNumber}`,
       );
 
     default:

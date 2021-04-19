@@ -1,27 +1,42 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import fetchQueryHandler from '../service/servisApi';
+import Container from '../components/Container';
 import Pagination from '../components/Pagination';
-// import styles from './HomePage.module.css';
+import FilmsList from '../components/FilmsList/FilmsList';
 
 const HomePage = () => {
   const [films, setFilms] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   let [pageNumber, setPageNumber] = useState(1);
 
+  const queryOptions = {
+    keyWord: '',
+    pageNumber,
+    value: '',
+  };
+
   useEffect(() => {
     setPageNumber(1);
+    setFilms([]);
 
-    fetchQueryHandler('trend').then(data => {
-      console.log(data);
-      setFilms(data.results);
-      setTotalPages(data.total_pages);
+    queryOptions.keyWord = 'trend';
+
+    fetchQueryHandler(queryOptions).then(films => {
+      console.log(films);
+
+      setFilms(films.results);
+      setTotalPages(films.total_pages);
     });
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
-    fetchQueryHandler('nPage', pageNumber).then(console.log);
-  }, [pageNumber]);
+    queryOptions.keyWord = 'nPage';
+
+    fetchQueryHandler(queryOptions).then(films => {
+      console.log(films);
+      setFilms(films.results);
+    });
+  }, [pageNumber]); // eslint-disable-line
 
   const getNextPage = () => {
     setPageNumber(++pageNumber);
@@ -37,44 +52,21 @@ const HomePage = () => {
 
   return (
     <>
-      <ul>
-        {films.map(film => (
-          <li key={film.id}>
-            <Link to={{ pathname: `movies/${film.id}` }}>{film.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <Container>
+        <FilmsList films={films} />
+      </Container>
 
-      <Pagination
-        totalPages={totalPages}
-        pageNumber={pageNumber}
-        onFirstPage={getFirstPage}
-        onDecrement={getPreviousPage}
-        onIncrement={getNextPage}
-      />
+      <Container>
+        <Pagination
+          totalPages={totalPages}
+          pageNumber={pageNumber}
+          onFirstPage={getFirstPage}
+          onDecrement={getPreviousPage}
+          onIncrement={getNextPage}
+        />
+      </Container>
     </>
   );
 };
 
 export default HomePage;
-
-/*
- <>
-      {theSearch && (
-        <ul>
-          {theSearch.map(film => (
-            <li key={film.id}>
-              <Link
-                to={{
-                  pathname: `${pathname}/${film.id}`,
-                  state: { theSearch },
-                }}
-              >
-                <h4>{film.title}</h4>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
-*/

@@ -1,14 +1,28 @@
 import { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { routes } from './routes';
+import Loader from 'react-loader-spinner';
 import Nav from './components/Nav';
 import NotFound from './pages/NotFound';
-import './App.css';
+import styles from './App.css';
 
 const App = () => (
   <>
     <Nav />
-    <Suspense fallback={<p>Loading</p>}>
+    {/* <Suspense fallback={<p>Loading</p>}> */}
+    <Suspense
+      fallback={
+        <div className={styles.loader}>
+          <Loader
+            type="ThreeDots"
+            color="#303F9F"
+            height={60}
+            width={60}
+            timeout={5000}
+          />
+        </div>
+      }
+    >
       <Switch>
         {routes.map(({ path, exact, component: Component, label }) => (
           <Route

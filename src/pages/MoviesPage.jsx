@@ -29,7 +29,8 @@ const MoviesPage = () => {
 
   useEffect(() => {
     queryOptions.keyWord = 'query';
-    getQueriedFilms();
+
+    queriedWord.length >= 2 && getQueriedFilms();
   }, [pageNumber]); // eslint-disable-line
 
   const getQueriedFilms = () => {

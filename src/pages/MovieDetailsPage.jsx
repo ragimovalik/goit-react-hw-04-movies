@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import Cast from '../components/Cast';
 import Reviews from '../components/Reviews';
 import FilmCard from '../components/FilmCard';
-// import styles from './MovieDetailsPage.module.css';
 import Container from '../components/Container';
 import Button from '../components/Button';
 
@@ -53,11 +52,13 @@ const MovieDetailsPage = () => {
     queryOptions.keyWord = 'review';
     queryOptions.value = params.movieId;
 
-    fetchQueryHandler(queryOptions).then(reviews => {
-      console.log(reviews.results);
-      setReviews(reviews.results);
-      setCast({ cast: [], crew: [] });
-    });
+    fetchQueryHandler(queryOptions)
+      .then(reviews => {
+        console.log(reviews.results);
+        setReviews(reviews.results);
+        setCast({ cast: [], crew: [] });
+      })
+      .catch(error => console.log('Something gone wrong', error));
   };
 
   return (

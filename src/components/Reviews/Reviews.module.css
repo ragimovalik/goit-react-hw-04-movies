@@ -1,10 +1,11 @@
 @value colors: '../../colors.css';
-@value bgcPrimary, darkened, lightest, lightened, text, white from colors;
+@value bgcPrimary, lightest, text, white from colors;
 
 .Reviews {
   padding: 15px;
   margin-bottom: 10px;
   background-color: lightest;
+  border-radius: 12px;
 }
 
 .Review {
@@ -21,10 +22,18 @@
   padding-left: 10px;
   font-size: 1.1rem;
   font-style: italic;
+  font-weight: 700;
+  color: text;
 }
 
 .Review__text {
   padding-left: 10px;
   line-height: 1.5;
   font-weight: 400;
+  color: text;
+}
+
+.Review__text::first-line {
+  font-size: 1.1rem;
+  line-height: 1.7;
 }

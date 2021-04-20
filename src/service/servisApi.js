@@ -5,7 +5,8 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const newFetch = url =>
   fetch(url)
     .then(res => res.json())
-    .then(data => data);
+    .then(data => data)
+    .catch(error => console.log('Error on server side', error));
 
 const fetchQueryHandler = ({ keyWord, pageNumber = 1, value }) => {
   switch (keyWord) {

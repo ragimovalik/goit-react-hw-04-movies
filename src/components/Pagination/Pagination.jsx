@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import styles from './Pagination.module.css';
 
 const Pagination = ({
-  pageNumber = 1,
-  totalPages = 1,
+  pageNumber,
+  totalPages,
   onFirstPage,
   onDecrement,
   onIncrement,
@@ -38,6 +39,19 @@ const Pagination = ({
       <span className={styles.Pagination__screen}>{totalPages}</span>
     </div>
   );
+};
+
+Pagination.defaultProps = {
+  pageNumber: 1,
+  totalPages: 1,
+};
+
+Pagination.propTypes = {
+  pageNumber: PropTypes.number,
+  totalPages: PropTypes.number,
+  onFirstPage: PropTypes.func,
+  onDecrement: PropTypes.func,
+  onIncrement: PropTypes.func,
 };
 
 export default Pagination;

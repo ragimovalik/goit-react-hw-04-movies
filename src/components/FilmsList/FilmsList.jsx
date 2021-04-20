@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-// import FilmCard from '../FilmCard';
+import PropTypes from 'prop-types';
 import styles from './FilmsList.module.css';
 
-const FilmsList = ({ films, queriedWord }) => {
+const FilmsList = ({ films }) => {
   return (
     <ul className={styles.Filmslist}>
       {films.map(({ id, title }) => (
@@ -21,8 +21,8 @@ const FilmsList = ({ films, queriedWord }) => {
   );
 };
 
-export default FilmsList;
+FilmsList.propTypes = {
+  films: PropTypes.array,
+};
 
-/*
-<FilmCard />
-*/
+export default FilmsList;

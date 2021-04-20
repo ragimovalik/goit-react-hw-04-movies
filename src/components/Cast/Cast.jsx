@@ -1,4 +1,4 @@
-// import { BsCardImage } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 import styles from './Cast.module.css';
 import defaultImage from '../../assets/default_image.jpg';
 
@@ -6,46 +6,54 @@ const Cast = ({ cast: { cast, crew } }) => (
   <div className={styles.Cast}>
     {cast.length ? <h3 className={styles.Cast__title}>Cast</h3> : null}
     <ul className={styles.Castlist}>
-      {cast.map(actor => (
-        <li className={styles.Castlist__item} key={actor.id}>
+      {cast.map(({ id, profile_path, name, character }) => (
+        <li className={styles.Castlist__item} key={id}>
           <div>
             <img
               className={styles.Castlist__image}
               src={
-                actor.profile_path
-                  ? `https://image.tmdb.org/t/p/w300${actor.profile_path}`
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w300${profile_path}`
                   : defaultImage
               }
-              alt={actor.name}
+              alt={name}
             />
 
-            <p className={styles.Castlist__name}> {actor.name}</p>
-            <p className={styles.Castlist__character}>{actor.character}</p>
+            <p className={styles.Castlist__name}> {name}</p>
+            <p className={styles.Castlist__character}>{character}</p>
           </div>
         </li>
       ))}
     </ul>
+
     {crew.length ? <h3 className={styles.Cast__title}>Crew</h3> : null}
     <ul className={styles.Castlist}>
-      {crew.map(crew => (
-        <li className={styles.Castlist__item} key={crew.credit_id}>
+      {crew.map(({ credit_id, profile_path, name, job }) => (
+        <li className={styles.Castlist__item} key={credit_id}>
           <div>
             <img
               className={styles.Castlist__image}
               src={
-                crew.profile_path
-                  ? `https://image.tmdb.org/t/p/w300${crew.profile_path}`
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w300${profile_path}`
                   : defaultImage
               }
-              alt={crew.name}
+              alt={name}
             />
-            <p className={styles.Castlist__name}>{crew.name}</p>
-            <p className={styles.Castlist__character}>{crew.job}</p>
+            <p className={styles.Castlist__name}>{name}</p>
+            <p className={styles.Castlist__character}>{job}</p>
           </div>
         </li>
       ))}
     </ul>
   </div>
 );
+
+Cast.propTypes = {
+  cast: PropTypes.shape({
+    cast: PropTypes.arrayOf(PropTypes.object),
+    crew: PropTypes.arrayOf(PropTypes.object),
+  }),
+};
 
 export default Cast;

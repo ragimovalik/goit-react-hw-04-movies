@@ -4,7 +4,7 @@ import { routes } from './routes';
 import Loader from 'react-loader-spinner';
 import Nav from './components/Nav';
 import NotFound from './pages/NotFound';
-import styles from './App.css';
+import './App.css';
 
 const App = () => (
   <>
@@ -12,7 +12,7 @@ const App = () => (
     {/* <Suspense fallback={<p>Loading</p>}> */}
     <Suspense
       fallback={
-        <div className={styles.loader}>
+        <div className={'loader'}>
           <Loader
             type="ThreeDots"
             color="#303F9F"
@@ -40,16 +40,6 @@ const App = () => (
 );
 
 export default App;
-
-/*
-      <Route path="/" exact component={HomePage} label="Home Page" />
-      <Route path="/movies" exact component={MoviesPage} label="Movies Page" />
-      <Route
-        path="/movies/:movieId"
-        component={MovieDetailsPage}
-        label="Movie Detail"
-      />
-*/
 
 /*
 Redirect to

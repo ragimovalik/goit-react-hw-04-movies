@@ -1,3 +1,6 @@
+@value colors: '../../colors.css';
+@value darkened, lightest, lightened, text, white from colors;
+
 .Filmslist {
   text-align: center;
   min-width: 360px;
@@ -15,6 +18,7 @@
 .Filmslist__title {
   display: block;
   font-size: 1.1rem;
+  color: text;
 }
 
 .Filmslist__item:hover,

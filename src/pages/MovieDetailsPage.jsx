@@ -41,7 +41,6 @@ const MovieDetailsPage = () => {
 
     fetchQueryHandler(queryOptions)
       .then(cast => {
-        console.log(cast);
         setCast(cast);
         setReviews([]);
       })
@@ -54,7 +53,6 @@ const MovieDetailsPage = () => {
 
     fetchQueryHandler(queryOptions)
       .then(reviews => {
-        console.log(reviews.results);
         setReviews(reviews.results);
         setCast({ cast: [], crew: [] });
       })

@@ -1,4 +1,21 @@
+@value colors: '../../colors.css';
+@value bgcPrimary, darkened, lightest, lightened, text, white from colors;
+
 .loader {
   display: block;
   margin: 0 auto;
+}
+
+.NotFoundPage {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 10px;
+  text-align: center;
+}
+
+.NotFoundPage__title {
+  margin-bottom: 20px;
 }

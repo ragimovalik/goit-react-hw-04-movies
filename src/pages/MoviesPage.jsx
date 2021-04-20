@@ -38,7 +38,6 @@ const MoviesPage = () => {
 
     fetchQueryHandler(queryOptions)
       .then(films => {
-        console.log(films);
         setSearchingResult(films.results);
         setTotalPages(films.total_pages);
       })

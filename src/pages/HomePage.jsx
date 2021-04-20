@@ -22,8 +22,6 @@ const HomePage = () => {
     queryOptions.keyWord = 'trend';
 
     fetchQueryHandler(queryOptions).then(films => {
-      console.log(films);
-
       setFilms(films.results);
       setTotalPages(films.total_pages);
     });
@@ -33,7 +31,6 @@ const HomePage = () => {
     queryOptions.keyWord = 'nPage';
 
     fetchQueryHandler(queryOptions).then(films => {
-      console.log(films);
       setFilms(films.results);
     });
   }, [pageNumber]); // eslint-disable-line

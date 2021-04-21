@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import fetchQueryHandler from '../service/servisApi';
 import { useParams } from 'react-router-dom';
 import Cast from '../components/Cast';
@@ -15,6 +16,11 @@ const MovieDetailsPage = () => {
   });
   const [reviews, setReviews] = useState([]);
   const params = useParams();
+
+  const location = useLocation();
+  const history = useHistory();
+
+  console.log(location, history);
 
   const queryOptions = {
     keyWord: '',
@@ -65,8 +71,6 @@ const MovieDetailsPage = () => {
       <Container>
         <Button btnText={'Cast'} onClick={getCast} />
         <Button btnText={'Reviews'} onClick={getReviews} />
-
-        {/* <Button  onClick={getNewPictures} /> */}
       </Container>
 
       <Container>
@@ -81,22 +85,3 @@ const MovieDetailsPage = () => {
 };
 
 export default MovieDetailsPage;
-
-/*
-// const history = useHistory();
-// const location = useLocation();
-
-// const goBackHandler = () =>
-//   history.push({ pathname: '/movies', state: state.films });
-
-
-const { location, history } = this.props;
-
-//     if (location.state && location.state.from) {
-//       return history.push(location.state.from);
-//  }
-
-// history.push(routes.books);
-
-history.push(location?.state?.from || routes.books);
-*/

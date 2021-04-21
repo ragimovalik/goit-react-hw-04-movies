@@ -1,7 +1,8 @@
 @value colors: '../../colors.css';
-@value bgcPrimary, darkened, lightest, lightened, text, white from colors;
+@value bgcPrimary, lightest, text, white from colors;
 
 .FilmCard {
+  position: relative;
   display: block;
   width: 450px;
   padding: 5px;
@@ -17,6 +18,7 @@
   font-weight: 700;
   font-size: 1.2rem;
   line-height: 1.3;
+  color: text;
 }
 
 .FilmCard__runtime {
@@ -30,6 +32,8 @@
   margin-bottom: 10px;
   padding: 5px;
   line-height: 1.3rem;
+  font-size: 1.1rem;
+  color: text;
 }
 
 .FilmCard__imagebox {
@@ -46,4 +50,29 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.overheadBtn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  width: 65px;
+  height: 65px;
+  border: 3px solid bgcPrimary;
+  border-radius: 50%;
+  outline: none;
+
+  background-color: rgba(41, 41, 51, 0.35);
+  color: white;
+  font-weight: 500;
+  opacity: 0.6;
+
+  cursor: pointer;
+}
+
+.overheadBtn:hover,
+.overheadBtn:focus {
+  opacity: 1;
+  transform: scale(1.05);
 }

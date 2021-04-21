@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import fetchQueryHandler from '../service/servisApi';
 import Container from '../components/Container';
 import Pagination from '../components/Pagination';
@@ -9,6 +10,10 @@ const HomePage = () => {
   const [totalPages, setTotalPages] = useState(1);
   let [pageNumber, setPageNumber] = useState(1);
 
+  const {
+    location: { state },
+  } = useHistory();
+
   const queryOptions = {
     keyWord: '',
     pageNumber,
@@ -16,7 +21,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    setPageNumber(1);
+    state?.state ? setPageNumber(state.state) : setPageNumber(1);
     setFilms([]);
 
     queryOptions.keyWord = 'trend';
@@ -50,7 +55,7 @@ const HomePage = () => {
   return (
     <>
       <Container>
-        <FilmsList films={films} />
+        <FilmsList films={films} pageNumber={pageNumber} />
       </Container>
 
       <Container>

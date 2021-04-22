@@ -8,35 +8,29 @@ import FilmsList from '../components/FilmsList/FilmsList';
 const HomePage = () => {
   const [films, setFilms] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
-  let [pageNumber, setPageNumber] = useState(1);
+  let [pageNumber, setPageNumber] = useState();
 
-  const {
-    location: { state },
-  } = useHistory();
+  const { location } = useHistory();
 
   const queryOptions = {
-    keyWord: '',
+    keyWord: 'trend',
     pageNumber,
     value: '',
   };
 
   useEffect(() => {
-    state?.state ? setPageNumber(state.state) : setPageNumber(1);
-    setFilms([]);
-
-    queryOptions.keyWord = 'trend';
-
-    fetchQueryHandler(queryOptions).then(films => {
-      setFilms(films.results);
-      setTotalPages(films.total_pages);
-    });
+    location?.pageNumber
+      ? setPageNumber(location.pageNumber)
+      : setPageNumber(1);
   }, []); // eslint-disable-line
 
   useEffect(() => {
     queryOptions.keyWord = 'nPage';
+    setFilms([]);
 
     fetchQueryHandler(queryOptions).then(films => {
       setFilms(films.results);
+      setTotalPages(films.total_pages);
     });
   }, [pageNumber]); // eslint-disable-line
 

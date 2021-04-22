@@ -5,15 +5,23 @@ import { useHistory } from 'react-router-dom';
 
 const FilmCard = ({
   filmInfo: { backdrop_path, overview, tagline, title, runtime },
+  pageNumber,
+  queriedWord,
 }) => {
   const {
     push,
     location: { state },
   } = useHistory();
 
-  const historyStateChecker = state ? state.pathname : '/';
+  const historyStatePathnameChecker =
+    state?.pathname === '/movies' ? state.pathname : '/';
 
-  const toBackBtnHandler = () => push({ pathname: historyStateChecker, state });
+  const toBackBtnHandler = () =>
+    push({
+      pathname: historyStatePathnameChecker,
+      pageNumber: state?.pageNumber,
+      queriedWord: state?.queriedWord,
+    });
 
   return (
     <div className={styles.FilmCard}>
@@ -52,6 +60,8 @@ FilmCard.propTypes = {
     title: PropTypes.string,
     runtime: PropTypes.number,
   }),
+  pageNumber: PropTypes.number,
+  queriedWord: PropTypes.string,
 };
 
 export default FilmCard;

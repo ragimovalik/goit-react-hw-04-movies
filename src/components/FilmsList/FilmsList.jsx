@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './FilmsList.module.css';
 
-const FilmsList = ({ films, pageNumber }) => {
+const FilmsList = ({ films, pageNumber, queriedWord }) => {
   const { pathname } = useLocation();
 
   return (
@@ -12,7 +12,7 @@ const FilmsList = ({ films, pageNumber }) => {
           <Link
             to={{
               pathname: `movies/${id}`,
-              state: { pathname, state: pageNumber },
+              state: { pathname, pageNumber, queriedWord },
             }}
           >
             <h4 className={styles.Filmslist__title}>{title}</h4>

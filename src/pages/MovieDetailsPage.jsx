@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
 import fetchQueryHandler from '../service/servisApi';
 import { useParams } from 'react-router-dom';
 import Cast from '../components/Cast';
@@ -16,11 +15,6 @@ const MovieDetailsPage = () => {
   });
   const [reviews, setReviews] = useState([]);
   const params = useParams();
-
-  const location = useLocation();
-  const history = useHistory();
-
-  console.log(location, history);
 
   const queryOptions = {
     keyWord: '',

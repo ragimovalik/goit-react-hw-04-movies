@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Form from '../components/Form';
 import fetchQueryHandler from '../service/servisApi';
 import FilmsList from '../components/FilmsList/FilmsList';
@@ -12,8 +13,10 @@ const MoviesPage = () => {
   let [pageNumber, setPageNumber] = useState(1);
   const [queriedWord, setQueriedWord] = useState('');
 
+  const { location } = useHistory();
+
   const queryOptions = {
-    keyWord: '',
+    keyWord: 'query',
     pageNumber,
     value: queriedWord,
   };
@@ -28,10 +31,16 @@ const MoviesPage = () => {
   };
 
   useEffect(() => {
+    location?.queriedWord
+      ? setQueriedWord(location.queriedWord)
+      : setQueriedWord('');
+  }, []); //eslint-disable-line
+
+  useEffect(() => {
     queryOptions.keyWord = 'query';
 
     queriedWord.length >= 2 && getQueriedFilms();
-  }, [pageNumber]); // eslint-disable-line
+  }, [pageNumber, queriedWord]); // eslint-disable-line
 
   const getQueriedFilms = () => {
     queryOptions.keyWord = 'query';
@@ -41,7 +50,7 @@ const MoviesPage = () => {
         setSearchingResult(films.results);
         setTotalPages(films.total_pages);
       })
-      .catch(error => 'Something gone wrong');
+      .catch(error => console.log('Something gone wrong', error));
   };
 
   const getNextPage = () => {
@@ -63,7 +72,13 @@ const MoviesPage = () => {
       </Container>
 
       <Container>
-        {searchingResult && <FilmsList films={searchingResult} />}
+        {searchingResult && (
+          <FilmsList
+            films={searchingResult}
+            pageNumber={pageNumber}
+            queriedWord={queriedWord}
+          />
+        )}
       </Container>
 
       <Container>

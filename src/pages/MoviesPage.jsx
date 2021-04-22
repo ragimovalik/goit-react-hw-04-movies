@@ -82,7 +82,7 @@ const MoviesPage = () => {
       </Container>
 
       <Container>
-        {searchingResult && (
+        {searchingResult.length > 1 && (
           <Pagination
             totalPages={totalPages}
             pageNumber={pageNumber}

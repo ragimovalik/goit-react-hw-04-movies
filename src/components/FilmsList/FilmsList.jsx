@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './FilmsList.module.css';
 
 const FilmsList = ({ films, pageNumber, queriedWord }) => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
 
   return (
     <ul className={styles.Filmslist}>
@@ -12,7 +12,7 @@ const FilmsList = ({ films, pageNumber, queriedWord }) => {
           <Link
             to={{
               pathname: `movies/${id}`,
-              state: { pathname, pageNumber, queriedWord },
+              state: { pathname, pageNumber, search },
             }}
           >
             <h4 className={styles.Filmslist__title}>{title}</h4>

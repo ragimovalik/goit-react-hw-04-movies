@@ -5,15 +5,17 @@ import fetchQueryHandler from '../service/servisApi';
 import FilmsList from '../components/FilmsList/FilmsList';
 import Pagination from '../components/Pagination';
 import Container from '../components/Container';
-// import queryString from 'query-string';
+import queryString from 'query-string';
 
 const MoviesPage = () => {
+  const { location, push } = useHistory();
+  const { search } = location;
+
+  const initialQueryState = queryString.parse(search);
   const [searchingResult, setSearchingResult] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   let [pageNumber, setPageNumber] = useState(1);
-  const [queriedWord, setQueriedWord] = useState('');
-
-  const { location } = useHistory();
+  const [queriedWord, setQueriedWord] = useState(initialQueryState.query || '');
 
   const queryOptions = {
     keyWord: 'query',
@@ -25,16 +27,23 @@ const MoviesPage = () => {
     setTotalPages(1);
     setPageNumber(1);
 
+    push({
+      ...location,
+      search: `query=${inputedText}`,
+    });
+
     queryOptions.value = inputedText;
     setQueriedWord(inputedText);
     getQueriedFilms();
   };
 
-  useEffect(() => {
-    location?.queriedWord
-      ? setQueriedWord(location.queriedWord)
-      : setQueriedWord('');
-  }, []); //eslint-disable-line
+  // useEffect(() => {  }, []); //eslint-disable-line
+
+  // useEffect(() => {
+  //   location?.queriedWord
+  //     ? setQueriedWord(location.queriedWord)
+  //     : setQueriedWord('');
+  // }, []); //eslint-disable-line
 
   useEffect(() => {
     queryOptions.keyWord = 'query';
@@ -82,7 +91,7 @@ const MoviesPage = () => {
       </Container>
 
       <Container>
-        {searchingResult.length > 1 && (
+        {searchingResult.length >= 1 && (
           <Pagination
             totalPages={totalPages}
             pageNumber={pageNumber}

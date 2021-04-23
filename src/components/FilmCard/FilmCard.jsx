@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 const FilmCard = ({
   filmInfo: { backdrop_path, overview, tagline, title, runtime },
   pageNumber,
-  queriedWord,
+  // queriedWord,
 }) => {
   const {
     push,
@@ -20,7 +20,8 @@ const FilmCard = ({
     push({
       pathname: historyStatePathnameChecker,
       pageNumber: state?.pageNumber,
-      queriedWord: state?.queriedWord,
+      // queriedWord: state?.queriedWord,
+      search: state?.search,
     });
 
   return (

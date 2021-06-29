@@ -12,6 +12,7 @@ const Pagination = ({
     <div className={styles.Pagination}>
       <button
         className={styles.Pagination__btn}
+        title="To first page"
         type="button"
         onClick={onFirstPage}
       >
@@ -21,22 +22,28 @@ const Pagination = ({
       <button
         className={styles.Pagination__btn}
         disabled={pageNumber === 1}
+        title="To previous page"
         type="button"
         onClick={onDecrement}
       >
         Prev
       </button>
-      <span className={styles.Pagination__screen}>{pageNumber}</span>
+      <span title="Current page" className={styles.Pagination__screen}>
+        {pageNumber}
+      </span>
 
       <button
         className={styles.Pagination__btn}
         disabled={pageNumber >= totalPages}
         type="button"
+        title="To next page"
         onClick={onIncrement}
       >
         Next
       </button>
-      <span className={styles.Pagination__screen}>{totalPages}</span>
+      <span title="Total pages" className={styles.Pagination__screen}>
+        {totalPages}
+      </span>
     </div>
   );
 };

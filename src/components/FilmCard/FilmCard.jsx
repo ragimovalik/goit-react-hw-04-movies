@@ -38,7 +38,7 @@ const FilmCard = ({
           title={tagline}
         />
       </div>
-      <h4 className={styles.FilmCard__title}>{title}</h4>
+      <h3 className={styles.FilmCard__title}>{title}</h3>
       <p className={styles.FilmCard__runtime}>Runtime: {runtime} mins.</p>
       <p className={styles.FilmCard__description}>Overview: {overview}</p>
       <button className={styles.overheadBtn} onClick={toBackBtnHandler}>

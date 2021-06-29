@@ -40,7 +40,3 @@ const App = () => (
 );
 
 export default App;
-
-/*
-Redirect to
-*/

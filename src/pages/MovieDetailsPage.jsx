@@ -67,13 +67,17 @@ const MovieDetailsPage = () => {
         <Button btnText={'Reviews'} onClick={getReviews} />
       </Container>
 
-      <Container>
-        <Cast cast={cast} />
-      </Container>
+      {(cast.cast.length >= 1 || cast.crew.length >= 1) && (
+        <Container>
+          <Cast cast={cast} />
+        </Container>
+      )}
 
-      <Container>
-        <Reviews reviews={reviews} />
-      </Container>
+      {reviews.length >= 1 && (
+        <Container>
+          <Reviews reviews={reviews} />
+        </Container>
+      )}
     </>
   );
 };
